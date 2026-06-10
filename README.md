@@ -27,3 +27,5 @@ npm run build
 The audit form submits through FormSubmit to `somdigital0752@gmail.com`.
 
 After the first test submission, FormSubmit will send a confirmation email to that address. Open the confirmation email and activate the form.
+
+Successful submissions redirect to `/thank-you`.
