@@ -25,7 +25,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { SectionHeading } from "@/components/SectionHeading";
 
-const whatsappLink = "https://wa.me/YOUR_NUMBER_HERE";
+const whatsappLink = "https://wa.me/9779827155905";
 
 const problemPoints = [
   "Boosting posts without a strategy",
@@ -147,7 +147,7 @@ function Section({ id, children, className = "" }: { id?: string; children: Reac
 function CTAButtons({ centered = false }: { centered?: boolean }) {
   return (
     <div className={`flex flex-col gap-3 sm:flex-row ${centered ? "justify-center" : ""}`}>
-      <Button href="#contact">Get Leads Now</Button>
+      <Button href="#audit-form">Get Leads Now</Button>
       <Button href={whatsappLink} variant="secondary" icon="whatsapp">
         Message Us on WhatsApp
       </Button>
@@ -398,7 +398,7 @@ export default function Home() {
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Start With Clarity Before Spending More</h2>
               <p className="mt-5 text-lg leading-8 text-slate-300">Before asking you to spend more money on ads, we first help you understand what is currently broken. That is why the first step is a Meta Ads audit.</p>
               <div className="mt-8">
-                <Button href="#contact">Reserve Your Spot</Button>
+                <Button href="#audit-form">Reserve Your Spot</Button>
               </div>
             </div>
             <div className="rounded-lg border border-white/10 bg-white/5 p-6">
@@ -446,7 +446,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section id="contact" className="bg-[linear-gradient(180deg,#eff6ff,#ffffff)]">
+        <Section id="audit-form" className="bg-[linear-gradient(180deg,#eff6ff,#ffffff)]">
           <div className="grid items-start gap-8 lg:grid-cols-[0.82fr_1.18fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-600">Free audit</p>

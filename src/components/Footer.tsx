@@ -28,8 +28,8 @@ export function Footer() {
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">Connect</h2>
           <div className="mt-4 grid gap-3 text-sm text-slate-300">
-            <Link href="#contact" className="hover:text-white">Book Free Audit</Link>
-            <Link href="https://wa.me/YOUR_NUMBER_HERE" className="hover:text-white">WhatsApp</Link>
+            <Link href="#audit-form" className="hover:text-white">Book Free Audit</Link>
+            <Link href="https://wa.me/9779827155905" className="hover:text-white">WhatsApp</Link>
             <Link href="#" className="hover:text-white">LinkedIn</Link>
             <Link href="#" className="hover:text-white">Instagram</Link>
           </div>

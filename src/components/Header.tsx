@@ -34,7 +34,7 @@ export function Header() {
             </Link>
           ))}
         </div>
-        <Button href="#contact" className="hidden sm:inline-flex">
+        <Button href="#audit-form" className="hidden sm:inline-flex">
           Book Free Audit
         </Button>
       </nav>

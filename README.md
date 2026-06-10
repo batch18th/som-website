@@ -19,7 +19,6 @@ npm run build
 
 ## Placeholders To Replace
 
-- Replace `https://wa.me/YOUR_NUMBER_HERE` with the real WhatsApp number.
 - Replace `metadataBase` in `src/app/layout.tsx` with the production domain.
 - Replace the social proof placeholders with real case studies, screenshots, and testimonials.
 - Add `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` to `.env.local` so the audit form can send email through Web3Forms.
