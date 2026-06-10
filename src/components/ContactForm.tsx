@@ -5,9 +5,7 @@ import type { FormEvent } from "react";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
-const web3FormsAccessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-const web3FormsEndpoint = "https://api.web3forms.com/submit";
-const whatsappRedirectUrl = "https://wa.me/9779827155905";
+const formSubmitEndpoint = "https://formsubmit.co/somdigital0752@gmail.com";
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -23,33 +21,23 @@ export function ContactForm() {
     setMessage("");
 
     try {
-      if (!web3FormsAccessKey || web3FormsAccessKey === "your_web3forms_access_key_here") {
-        throw new Error("Email is not configured yet. Add your Web3Forms access key to .env.local and restart the dev server.");
-      }
-
-      formData.append("access_key", web3FormsAccessKey);
-      formData.append("subject", "New Meta Ads Audit Request");
-      formData.append("from_name", "Meta Ads Expert Website");
-      formData.append("redirect_after_success", whatsappRedirectUrl);
-
       const response = await fetch(form.action, {
         method: "POST",
-        body: formData
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
       });
 
-      const result = (await response.json()) as { success?: boolean; message?: string };
+      const result = (await response.json()) as { success?: string; message?: string };
 
-      if (!response.ok || !result.success) {
+      if (!response.ok) {
         throw new Error(result.message || "Email sending failed. Please try again.");
       }
 
       setStatus("success");
-      setMessage("Your audit request was sent successfully. Redirecting you to WhatsApp...");
+      setMessage("Thank you. Your free audit request was sent successfully.");
       form.reset();
-
-      window.setTimeout(() => {
-        window.location.href = whatsappRedirectUrl;
-      }, 1200);
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Email sending failed. Please try again.");
@@ -60,16 +48,18 @@ export function ContactForm() {
 
   return (
     <form
-      action={web3FormsEndpoint}
+      action={formSubmitEndpoint}
       method="POST"
       onSubmit={handleSubmit}
       className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-xl shadow-blue-950/5 sm:grid-cols-2"
     >
+      <input type="hidden" name="_subject" value="New Free Audit Request" />
+      <input type="hidden" name="_captcha" value="false" />
       <label className="grid gap-2 text-sm font-semibold text-slate-800">
         Name
         <input
           required
-          name="name"
+          name="Name"
           className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         />
       </label>
@@ -77,7 +67,7 @@ export function ContactForm() {
         Business name
         <input
           required
-          name="business_name"
+          name="Business name"
           className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         />
       </label>
@@ -86,7 +76,7 @@ export function ContactForm() {
         <input
           required
           type="email"
-          name="email"
+          name="Email"
           className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         />
       </label>
@@ -94,14 +84,14 @@ export function ContactForm() {
         WhatsApp number
         <input
           required
-          name="whatsapp_number"
+          name="WhatsApp number"
           className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         />
       </label>
       <label className="grid gap-2 text-sm font-semibold text-slate-800 sm:col-span-2">
         Website or social media link
         <input
-          name="website_or_social_media_link"
+          name="Website or social media link"
           className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         />
       </label>
@@ -109,7 +99,7 @@ export function ContactForm() {
         What are you struggling with?
         <textarea
           required
-          name="what_are_you_struggling_with"
+          name="What are you struggling with?"
           rows={4}
           className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         />
@@ -117,7 +107,7 @@ export function ContactForm() {
       <label className="grid gap-2 text-sm font-semibold text-slate-800 sm:col-span-2">
         Monthly ad budget range
         <select
-          name="monthly_ad_budget_range"
+          name="Monthly ad budget range"
           className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         >
           <option>Not running ads yet</option>
